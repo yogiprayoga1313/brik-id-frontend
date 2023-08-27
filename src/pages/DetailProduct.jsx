@@ -26,7 +26,7 @@ function DetailProduct() {
         </div>
         <div className='flex flex-col gap-7'>
           <div className='border border-blue-400 w-[100px] h-[40px] rounded-lg flex justify-center items-center'>
-            <span className='text-blue-700'>{detailProduct?.category}</span>
+            <span className='text-blue-700'>{detailProduct?.Category?.name}</span>
           </div>
           <div className='font-bold text-3xl'>
             <span>{detailProduct?.name}</span>
