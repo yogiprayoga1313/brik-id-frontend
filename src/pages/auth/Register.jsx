@@ -89,7 +89,7 @@ function Regsiter() {
   const [loadingModal, setLoadingModal] = React.useState(false)
 
 
-  const doLogin = async (values, { setSubmitting, setErrors }) => {
+  const doRegister = async (values, { setSubmitting, setErrors }) => {
     setLoadingModal(true)
     dispatch(clearMessage())
     dispatch(asyncRegisterAction(values))
@@ -109,37 +109,6 @@ function Regsiter() {
 
 
   }
-
-  // const doSignUp = async (event) => {
-  //   setLoadingModal(true)
-  //   event.preventDefault()
-  //   setErrMessage('')
-  //   setSuccesMessage('')
-  //   try {
-  //     const { value: fullName } = event.target.fullName
-  //     const { value: email } = event.target.email
-  //     const { value: password } = event.target.password
-  //     const { value: confirmPassword } = event.target.confirmPassword
-  //     const body = new URLSearchParams({ fullName, email, password, confirmPassword }).toString()
-
-  //     if (password !== confirmPassword) {
-  //       setErrMessage(errMessage)
-  //     }
-  //     const { data } = await http().post('/auth/register', body)
-  //     console.log(data)
-  //     window.localStorage.setItem('token', data.results.token)
-  //     setToken(data.results.token)
-  //     setSuccesMessage("Registration successful!")
-  //     setTimeout(() => {
-  //       setLoadingModal(false)
-  //     }, 800)
-  //   } catch (err) {
-  //     const message = err?.response?.data?.message
-  //     if (message) {
-  //       setErrMessage(message)
-  //     }
-  //   }
-  // }
 
   React.useEffect(() => {
     if (token) {
@@ -175,7 +144,7 @@ function Regsiter() {
             confirmPassword: ''
           }}
           validationSchema={validationSechema}
-          onSubmit={doLogin}
+          onSubmit={doRegister}
         >
           {(props) => (
             <FormRegister {...props} />
