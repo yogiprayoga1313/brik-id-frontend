@@ -116,52 +116,54 @@ function Home() {
   };
   return (
     <>
-      <div className='flex flex-col justify-center items-center mt-10'>
+      <div className='flex flex-col justify-center items-center mt-10 p-3'>
         <div className='font-bold text-3xl mb-10'>Home</div>
         <div>
           <div className='flex justify-center items-center gap-10'>
-            <Formik
-              initialValues={{
-                search: ""
-              }}
-              onSubmit={onSearch}
-            >
-              {({ handleBlur, handleChange, handleSubmit, values }) => (
-                <>
-                  <form onSubmit={handleSubmit} className='flex gap-5'>
-                    <div>
-                      <input
-                        type="text"
-                        placeholder="search"
-                        className="input input-bordered w-[700px]"
-                        name='search'
-                        onBlur={handleBlur}
-                        onChange={handleChange}
-                        value={values.search} />
-                    </div>
-                    <div>
-                      <button type='submit' className='normal-case text-white btn btn-primary st'>
-                        Search
-                      </button>
-                    </div>
-                  </form>
-                </>
-              )}
-            </Formik>
             <div>
-              <div>
-                <div className="dropdown dropdown-end">
-                  <label tabIndex={0} className="btn m-1"><FiMenu /></label>
-                  <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                    <li onClick={() => { handleSort('DESC') }}><a className='text-black'>Update</a></li>
-                    <li onClick={() => { handleSort('ASC') }}><a className='text-black'>Lastes</a></li>
-                  </ul>
-                </div>
-              </div>
+              <Formik
+                initialValues={{
+                  search: ""
+                }}
+                onSubmit={onSearch}
+              >
+                {({ handleBlur, handleChange, handleSubmit, values }) => (
+                  <>
+                    <div className='md:flex-row flex-col flex gap-5 justify-center items-center'>
+                      <form onSubmit={handleSubmit} className='md:flex-row  flex flex-col gap-5'>
+                        <div>
+                          <input
+                            type="text"
+                            placeholder="search"
+                            className="input input-bordered md:w-[700px]"
+                            name='search'
+                            onBlur={handleBlur}
+                            onChange={handleChange}
+                            value={values.search} />
+                        </div>
+                        <div>
+                          <button type='submit' className='normal-case text-white btn btn-primary st'>
+                            Search
+                          </button>
+                        </div>
+                      </form>
+                      <div>
+                        <div className="dropdown dropdown-end">
+                          <label tabIndex={0} className="btn m-1"><FiMenu /></label>
+                          <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                            <li onClick={() => { handleSort('DESC') }}><a className='text-black'>Update</a></li>
+                            <li onClick={() => { handleSort('ASC') }}><a className='text-black'>Lastes</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </Formik>
             </div>
           </div>
-          <div className='flex justify-center items-center gap-10 mt-[50px]'>
-            <div className='flex flex-col gap-5'>
+          <div className='md:flex-row flex flex-col justify-center items-center gap-10 mt-[50px]'>
+            <div className='flex flex-col  gap-5'>
               <div className='flex justify-center items-center rounded-lg'>
                 {/* <Link>Add Product</Link> */}
                 {/* The button to open modal */}
@@ -188,105 +190,106 @@ function Home() {
                       onSubmit={createProduct}>
                       {({ handleBlur, handleChange, handleSubmit, values }) => (
                         <>
-                          <form onSubmit={handleSubmit} className='flex gap-5'>
-                            <div className='flex flex-col gap-4'>
-                              <div className='border border-black w-[200px] h-[250px]'>
-                                {selectedPicure ? (<img src={pictureURI} alt="image" className='w-[200px] h-[248px] bg-cover' />) : (<span className=' flex justify-center items-center mt-28 font-bold text-red-500'>No Images</span>)}
-                              </div>
-                              <div>
-                                <input type="file" name='image' onChange={changePicture} />
-                              </div>
-                              <div>
-                                <div className='flex flex-col gap-3 form-control'>
-                                  <span>Category</span>
-                                  <select
-                                    className="select select-primary text-black"
-                                    name="categoryId"
-                                    onBlur={handleBlur}
-                                    onChange={handleChange}
-                                    value={values.categoryId}
-                                  >
-                                    {categories.map(item => (
-                                      <>
-                                        <option key={item.id} value={item.id}>
-                                          {item.name}
-                                        </option>
-                                      </>
-                                    ))}
-                                  </select>
+                          <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
+                            <div className='md:flex-row flex flex-col gap-5'>
+                              <div className='flex flex-col gap-4'>
+                                <div className='border border-black w-[200px] h-[250px]'>
+                                  {selectedPicure ? (<img src={pictureURI} alt="image" className='w-[200px] h-[248px] bg-cover' />) : (<span className=' flex justify-center items-center mt-28 font-bold text-red-500'>No Images</span>)}
+                                </div>
+                                <div>
+                                  <input type="file" name='image' onChange={changePicture} />
+                                </div>
+                                <div>
+                                  <div className='flex flex-col gap-3 form-control'>
+                                    <span>Category</span>
+                                    <select
+                                      className="select select-primary text-black"
+                                      name="categoryId"
+                                      onBlur={handleBlur}
+                                      onChange={handleChange}
+                                      value={values.categoryId}
+                                    >
+                                      {categories.map(item => (
+                                        <>
+                                          <option key={item.id} value={item.id}>
+                                            {item.name}
+                                          </option>
+                                        </>
+                                      ))}
+                                    </select>
+                                  </div>
                                 </div>
                               </div>
-
-                              <button className='btn btn-ghost border border-indigo-600 w-[140px] h-10'>Save</button>
-                            </div>
-                            <div>
-                              <div className='flex flex-col gap-2'>
-                                <input
-                                  type="text"
-                                  name='name'
-                                  placeholder="Name"
-                                  className="input input-bordered w-full max-w-xs"
-                                  value={values.name}
-                                  onBlur={handleBlur}
-                                  onChange={handleChange} />
-                                <input
-                                  type="text"
-                                  name='price'
-                                  placeholder="Price"
-                                  className="input input-bordered w-full max-w-xs"
-                                  value={values.price}
-                                  onBlur={handleBlur}
-                                  onChange={handleChange} />
-                                <input
-                                  type="text"
-                                  name='sku'
-                                  placeholder="sku"
-                                  className="input input-bordered w-full max-w-xs"
-                                  value={values.sku}
-                                  onBlur={handleBlur}
-                                  onChange={handleChange} />
-                                <input
-                                  type="text"
-                                  name='weight'
-                                  placeholder="weight"
-                                  className="input input-bordered w-full max-w-xs"
-                                  value={values.weight}
-                                  onBlur={handleBlur}
-                                  onChange={handleChange} />
-                                <input
-                                  type="text"
-                                  name='width'
-                                  placeholder="Width"
-                                  className="input input-bordered w-full max-w-xs"
-                                  value={values.width}
-                                  onBlur={handleBlur}
-                                  onChange={handleChange} />
-                                <input
-                                  type="text"
-                                  name='length'
-                                  placeholder="Length"
-                                  className="input input-bordered w-full max-w-xs"
-                                  value={values.length}
-                                  onBlur={handleBlur}
-                                  onChange={handleChange} />
-                                <input
-                                  type="text"
-                                  name='height'
-                                  placeholder="Height"
-                                  className="input input-bordered w-full max-w-xs"
-                                  value={values.height}
-                                  onBlur={handleBlur}
-                                  onChange={handleChange} />
-                                <input
-                                  type="text"
-                                  name='description'
-                                  placeholder="Description"
-                                  className="input input-bordered w-full max-w-xs"
-                                  value={values.description}
-                                  onBlur={handleBlur}
-                                  onChange={handleChange} />
+                              <div>
+                                <div className='flex flex-col gap-2'>
+                                  <input
+                                    type="text"
+                                    name='name'
+                                    placeholder="Name"
+                                    className="input input-bordered w-full max-w-xs"
+                                    value={values.name}
+                                    onBlur={handleBlur}
+                                    onChange={handleChange} />
+                                  <input
+                                    type="text"
+                                    name='price'
+                                    placeholder="Price"
+                                    className="input input-bordered w-full max-w-xs"
+                                    value={values.price}
+                                    onBlur={handleBlur}
+                                    onChange={handleChange} />
+                                  <input
+                                    type="text"
+                                    name='sku'
+                                    placeholder="sku"
+                                    className="input input-bordered w-full max-w-xs"
+                                    value={values.sku}
+                                    onBlur={handleBlur}
+                                    onChange={handleChange} />
+                                  <input
+                                    type="text"
+                                    name='weight'
+                                    placeholder="weight"
+                                    className="input input-bordered w-full max-w-xs"
+                                    value={values.weight}
+                                    onBlur={handleBlur}
+                                    onChange={handleChange} />
+                                  <input
+                                    type="text"
+                                    name='width'
+                                    placeholder="Width"
+                                    className="input input-bordered w-full max-w-xs"
+                                    value={values.width}
+                                    onBlur={handleBlur}
+                                    onChange={handleChange} />
+                                  <input
+                                    type="text"
+                                    name='length'
+                                    placeholder="Length"
+                                    className="input input-bordered w-full max-w-xs"
+                                    value={values.length}
+                                    onBlur={handleBlur}
+                                    onChange={handleChange} />
+                                  <input
+                                    type="text"
+                                    name='height'
+                                    placeholder="Height"
+                                    className="input input-bordered w-full max-w-xs"
+                                    value={values.height}
+                                    onBlur={handleBlur}
+                                    onChange={handleChange} />
+                                  <input
+                                    type="text"
+                                    name='description'
+                                    placeholder="Description"
+                                    className="input input-bordered w-full max-w-xs"
+                                    value={values.description}
+                                    onBlur={handleBlur}
+                                    onChange={handleChange} />
+                                </div>
                               </div>
                             </div>
+                            <button className='btn btn-ghost border border-indigo-600 w-[140px] h-10'>Save</button>
                           </form>
                         </>
                       )}
@@ -301,7 +304,7 @@ function Home() {
                 <Link onClick={doLogout} className='text-red-500'>Logout</Link>
               </div>
             </div>
-            <div className='grid grid-cols-5 gap-10'>
+            <div className='md:grid md:grid-cols-5 grid grid-cols-1 gap-10'>
               {product.map(product => {
                 return (
                   <>
@@ -321,7 +324,7 @@ function Home() {
               })}
             </div>
           </div>
-          <div className="flex justify-center items-center gap-5 mt-10">
+          <div className="flex justify-center items-center gap-5 mt-10 mb-10">
             <div className="flex justify-center items-center">
               <div>
                 <button className="btn btn-base-100 shadow-lg shadow-black-500/70" onClick={handlePrevPage}><AiOutlineArrowLeft size={20} color="black" /></button>

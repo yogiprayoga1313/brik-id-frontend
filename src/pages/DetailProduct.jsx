@@ -20,9 +20,9 @@ function DetailProduct() {
       <div>
         <div className='font-bold text-3xl'>Detail Product</div>
       </div>
-      <div key={detailProduct?.id} className='flex gap-10'>
-        <div className='border-4 border-black w-[500px] h-[530px]'>
-          <img className='w-[500px] h-[523px]' src={detailProduct?.image} alt="" />
+      <div key={detailProduct?.id} className='md:flex-row flex-col flex gap-10 mb-10 p-5'>
+        <div className='border-4 border-black md:w-[500px] md:h-[530px] w-[300px]'>
+          <img className='md:w-[500px] w-[300px] md:h-[523px] h-[300px]' src={detailProduct?.image} alt="" />
         </div>
         <div className='flex flex-col gap-7'>
           <div className='border border-blue-400 w-[100px] h-[40px] rounded-lg flex justify-center items-center'>
@@ -42,10 +42,9 @@ function DetailProduct() {
               <span>Height: {detailProduct?.height}</span>
             </div>
           </div>
-          <div className='font-bold text-red-600 text-3xl'>
+          <div className='font-bold text-red-600 text-4xl'>
             <span>Rp.{detailProduct?.price}</span>
           </div>
-          <button className="btn btn-primary w-[320px] normal-case text-white ">Update</button>
         </div>
       </div>
     </div>
