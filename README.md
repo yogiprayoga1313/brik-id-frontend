@@ -42,7 +42,7 @@ Web application For A web application for listing products and creating new prod
 1. Download file to Zip
 2. Run with Vs code, npm i to install all package
 3. use env: VITE_BACKEND_URL=http://localhost:8800
-4. please use nrpm run dev to run app in terminal
+4. please use npm run dev to run app in terminal
 5. Don't forget download Backend App to use Frontend App
 
 
